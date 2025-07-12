@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICCO - Infra Solutions | Vendor Registration</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Exact same styling as homepage */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            max-height: 180px;
+            width: auto;
+            max-width: 200%;
+            height: auto;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+           
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-p {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2CBCB5;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .footer-logo-img {
+            max-height: 90px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .footer-logo-img {
+                max-height: 80px;
+            }
+        }
+
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0px;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: #2CBCB5;
+            background: rgba(44, 188, 181, 0.1);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-item:hover {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icons .instagram { background: #E4405F; }
+        .social-icons .facebook { background: #1877F2; }
+        .social-icons .twitter { background: #1DA1F2; }
+        .social-icons .youtube { background: #FF0000; }
+        .social-icons .linkedin { background: #0A66C2; }
+
+        .award-badge {
+            width: 40px;
+            height: 40px;
+            background: #2CBCB5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Vendor Registration Form */
+        .vendor-registration {
+            background: linear-gradient(135deg, #2CBCB5 0%, #20a5a0 100%);
+            min-height: 100vh;
+            padding: 100px 0 50px;
+        }
+
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2CBCB5;
+            margin-bottom: 40px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 12px 15px;
+            border: 2px solid #2CBCB5;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #20a5a0;
+            box-shadow: 0 0 0 3px rgba(44, 188, 181, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #2CBCB5;
+            opacity: 0.7;
+        }
+
+        .form-select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%232CBCB5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+            appearance: none;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Radio Button Groups */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .radio-group-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .radio-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .radio-input {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #2CBCB5;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            appearance: none;
+            transition: all 0.3s;
+        }
+
+        .radio-input:checked {
+            background: #2CBCB5;
+            border-color: #2CBCB5;
+        }
+
+        .radio-input:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .radio-label {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Message Textarea */
+        .message-group {
+            margin: 30px 0;
+        }
+
+        .message-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #2CBCB5;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            transition: all 0.3s;
+        }
+
+        .message-textarea:focus {
+            outline: none;
+            border-color: #20a5a0;
+            box-shadow: 0 0 0 3px rgba(44, 188, 181, 0.1);
+        }
+
+        .message-textarea::placeholder {
+            color: #2CBCB5;
+            opacity: 0.7;
+        }
+
+        /* Form Footer */
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .recaptcha-container {
+            flex: 1;
+        }
+
+        .submit-btn {
+            background: #2CBCB5;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: #20a5a0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 188, 181, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer - Same as homepage */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-main {
+            color: #2CBCB5;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #2CBCB5;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .get-estimate-btn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            background: #FFD700;
+            color: #333;
+            padding: 15px 30px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 999;
+            transform-origin: right center;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-list {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            
+            .form-container {
+                padding: 30px;
+            }
+            
+            .form-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .vendor-registration {
+                padding: 120px 20px 50px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .form-title {
+                font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .radio-options {
+                gap: 15px;
+            }
+            
+            .form-footer {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 20px;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .get-estimate-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .form-title {
+                font-size: 1.8rem;
+            }
+            
+            .radio-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Form validation styles */
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #e74c3c;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="0.png" alt="PICCO Logo" class="logo-img">
+                    </div>
+                    
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">ABOUT US</a></li>
+                        <li class="nav-item"><a href="whatwedo.html" class="nav-link">WHAT WE DO</a></li>
+                        <li class="nav-item">
+                            <a href="products.html" class="nav-link">
+                                PRODUCTS
+                                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                            </a>
+                            <div class="dropdown">
+                                <a href="residential.html" class="dropdown-item">RESIDENTIAL</a>
+                                <a href="commercial.html" class="dropdown-item">COMMERCIAL</a>
+                                <a href="furnitures.html" class="dropdown-item">FURNITURES</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">GALLERY</a></li>
+                        <li class="nav-item"><a href="vendor-registration.html" class="nav-link active">VENDOR REGISTRATION</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+                        <li class="nav-item"><a href="contact-us.html" class="nav-link">CONTACT US</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="social-icons">
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="award-badge">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Vendor Registration Form -->
+    <section class="vendor-registration">
+        <div class="form-container">
+            <h1 class="form-title">Vendor Registration</h1>
+            
+            <form id="vendorForm" novalidate>
+                <div class="form-grid">
+                    <!-- Left Column -->
+                    <div class="form-group">
+                        <label class="form-label" for="supplierName">Name of the supplier *</label>
+                        <input type="text" id="supplierName" name="supplierName" class="form-input" placeholder="Name of the supplier" required>
+                        <div class="error-message" id="supplierNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="vendorCategory">Select Vendor Category *</label>
+                        <select id="vendorCategory" name="vendorCategory" class="form-select" required>
+                            <option value="">Select Vendor Category</option>
+                            <option value="architecture">Architecture</option>
+                            <option value="civil">Civil Works</option>
+                            <option value="interior">Interior Design</option>
+                            <option value="mep">MEP Works</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="electrical">Electrical</option>
+                            <option value="plumbing">Plumbing</option>
+                            <option value="hvac">HVAC</option>
+                            <option value="security">Security Systems</option>
+                            <option value="it">IT Solutions</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="vendorCategoryError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="address">Address *</label>
+                        <input type="text" id="address" name="address" class="form-input" placeholder="Address" required>
+                        <div class="error-message" id="addressError"></div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label" for="itemDetails">Details of Item interested for Supply / Service *</label>
+                        <textarea id="itemDetails" name="itemDetails" class="form-textarea" placeholder="Details of Item interested for Supply / Service" required></textarea>
+                        <div class="error-message" id="itemDetailsError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="city">City *</label>
+                        <input type="text" id="city" name="city" class="form-input" placeholder="City" required>
+                        <div class="error-message" id="cityError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="firmType">Type of firm *</label>
+                        <select id="firmType" name="firmType" class="form-select" required>
+                            <option value="">Type of firm</option>
+                            <option value="proprietorship">Proprietorship</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="private-limited">Private Limited</option>
+                            <option value="public-limited">Public Limited</option>
+                            <option value="llp">LLP</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="firmTypeError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="state">State *</label>
+                        <input type="text" id="state" name="state" class="form-input" placeholder="State" required>
+                        <div class="error-message" id="stateError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="contactPerson">Contact Person *</label>
+                        <input type="text" id="contactPerson" name="contactPerson" class="form-input" placeholder="Contact Person" required>
+                        <div class="error-message" id="contactPersonError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="country">Country *</label>
+                        <input type="text" id="country" name="country" class="form-input" placeholder="Country" value="India" required>
+                        <div class="error-message" id="countryError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="designation">Designation</label>
+                        <input type="text" id="designation" name="designation" class="form-input" placeholder="Designation">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="postalCode">Postal code *</label>
+                        <input type="text" id="postalCode" name="postalCode" class="form-input" placeholder="Postal code" required>
+                        <div class="error-message" id="postalCodeError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="alternateEmail">Alternate Email ID</label>
+                        <input type="email" id="alternateEmail" name="alternateEmail" class="form-input" placeholder="Alternate Email ID">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phoneNumber">Phone no. with STD code *</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" class="form-input" placeholder="Phone no. with STD code" required>
+                        <div class="error-message" id="phoneNumberError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="bankName">Bank Name ( For RTGS purpose )</label>
+                        <input type="text" id="bankName" name="bankName" class="form-input" placeholder="Bank Name ( For RTGS purpose )">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="mobileNumber">Mobile Number *</label>
+                        <input type="tel" id="mobileNumber" name="mobileNumber" class="form-input" placeholder="Mobile Number" required>
+                        <div class="error-message" id="mobileNumberError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="branchName">Branch Name ( For RTGS purpose )</label>
+                        <input type="text" id="branchName" name="branchName" class="form-input" placeholder="Branch Name ( For RTGS purpose )">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="emailId">Email ID *</label>
+                        <input type="email" id="emailId" name="emailId" class="form-input" placeholder="Email ID" required>
+                        <div class="error-message" id="emailIdError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="accountNumber">Account Number ( For RTGS purpose )</label>
+                        <input type="text" id="accountNumber" name="accountNumber" class="form-input" placeholder="Account Number ( For RTGS purpose )">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="gstNumber">GST No.</label>
+                        <input type="text" id="gstNumber" name="gstNumber" class="form-input" placeholder="GST No.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="accountType">Type of Account</label>
+                        <input type="text" id="accountType" name="accountType" class="form-input" placeholder="Type of Account">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="panNumber">PAN No. *</label>
+                        <input type="text" id="panNumber" name="panNumber" class="form-input" placeholder="PAN No." required>
+                        <div class="error-message" id="panNumberError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="adhaarNumber">Adhaar Number</label>
+                        <input type="text" id="adhaarNumber" name="adhaarNumber" class="form-input" placeholder="Adhaar Number">
+                    </div>
+                </div>
+                
+                <!-- Radio Button Groups -->
+                <div class="radio-group">
+                    <div class="radio-group-title">MSME Status</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="msmeStatus" value="micro" class="radio-input">
+                            <span class="radio-label">Micro</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="msmeStatus" value="small" class="radio-input">
+                            <span class="radio-label">Small</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="msmeStatus" value="medium" class="radio-input">
+                            <span class="radio-label">Medium</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="msmeStatus" value="large" class="radio-input">
+                            <span class="radio-label">Large</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="msmeStatus" value="na" class="radio-input">
+                            <span class="radio-label">N/A</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="radio-group">
+                    <div class="radio-group-title">Whether Iso Certified</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="isoCertified" value="yes" class="radio-input">
+                            <span class="radio-label">Yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="isoCertified" value="no" class="radio-input">
+                            <span class="radio-label">No</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Message Textarea -->
+                <div class="message-group">
+                    <textarea id="message" name="message" class="message-textarea" placeholder="Your Message"></textarea>
+                </div>
+                
+                <!-- Form Footer -->
+                <div class="form-footer">
+                    <div class="recaptcha-container">
+                        <div class="g-recaptcha" data-sitekey="6LdYourSiteKeyHere"></div>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <img src="0.png" alt="PICCO Logo" class="footer-logo-img">
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Picco Infra Solutions Pvt Ltd</h4>
+                        <p>Kres Building, 103/2, Uthamar Gandhi Road,<br>
+                        Nungambakkam, Chennai, Tamil Nadu<br>
+                        600034</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>info@piccoinfra.in<br>
+                        sales@piccoinfra.in<br>
+                        www.piccoinfra.in</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>Privacy statement<br>
+                        Cookie statement<br>
+                        Terms of service<br>
+                        Site map</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 | powered by Bizmantra Business & IT Solutions Pvt Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Form validation
+        function validateForm() {
+            const requiredFields = [
+                'supplierName', 'vendorCategory', 'address', 'itemDetails', 
+                'city', 'firmType', 'state', 'contactPerson', 'country', 
+                'postalCode', 'phoneNumber', 'mobileNumber', 'emailId', 'panNumber'
+            ];
+            
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.textContent = '';
+            });
+            document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(field => {
+                field.classList.remove('error');
+            });
+            
+            // Validate required fields
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                const errorElement = document.getElementById(fieldName + 'Error');
+                
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    errorElement.textContent = 'This field is required';
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('emailId');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailPattern.test(emailField.value)) {
+                emailField.classList.add('error');
+                document.getElementById('emailIdError').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate alternate email if provided
+            const altEmailField = document.getElementById('alternateEmail');
+            if (altEmailField.value && !emailPattern.test(altEmailField.value)) {
+                altEmailField.classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate phone numbers
+            const phonePattern = /^[\d\s\-\+$$$$]+$/;
+            const phoneField = document.getElementById('phoneNumber');
+            const mobileField = document.getElementById('mobileNumber');
+            
+            if (phoneField.value && !phonePattern.test(phoneField.value)) {
+                phoneField.classList.add('error');
+                document.getElementById('phoneNumberError').textContent = 'Please enter a valid phone number';
+                isValid = false;
+            }
+            
+            if (mobileField.value && !phonePattern.test(mobileField.value)) {
+                mobileField.classList.add('error');
+                document.getElementById('mobileNumberError').textContent = 'Please enter a valid mobile number';
+                isValid = false;
+            }
+            
+            // Validate PAN number format
+            const panField = document.getElementById('panNumber');
+            const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+            if (panField.value && !panPattern.test(panField.value.toUpperCase())) {
+                panField.classList.add('error');
+                document.getElementById('panNumberError').textContent = 'Please enter a valid PAN number (e.g., ABCDE1234F)';
+            isValid = false;
+            }
+            
+            // Validate GST number format if provided
+            const gstField = document.getElementById('gstNumber');
+            const gstPattern = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+            if (gstField.value && !gstPattern.test(gstField.value.toUpperCase())) {
+                gstField.classList.add('error');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            if (!validateForm()) {
+                // Scroll to first error
+                const firstError = document.querySelector('.form-input.error, .form-select.error, .form-textarea.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+            
+            // Check reCAPTCHA (in real implementation)
+            // const recaptchaResponse = grecaptcha.getResponse();
+            // if (!recaptchaResponse) {
+            //     alert('Please complete the reCAPTCHA verification');
+            //     return;
+            // }
+            
+            // Show success message
+            const formContainer = document.querySelector('.form-container');
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.textContent = 'Thank you! Your vendor registration has been submitted successfully. We will contact you soon.';
+            formContainer.insertBefore(successMessage, formContainer.firstChild);
+            
+            // Reset form
+            document.getElementById('vendorForm').reset();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+        }
+
+        // Auto-format PAN number
+        function formatPanNumber(input) {
+            input.value = input.value.toUpperCase();
+        }
+
+        // Auto-format GST number
+        function formatGstNumber(input) {
+            input.value = input.value.toUpperCase();
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            
+            // Add form submit event listener
+            document.getElementById('vendorForm').addEventListener('submit', handleFormSubmit);
+            
+            // Add auto-formatting for PAN and GST
+            document.getElementById('panNumber').addEventListener('input', function() {
+                formatPanNumber(this);
+            });
+            
+            document.getElementById('gstNumber').addEventListener('input', function() {
+                formatGstNumber(this);
+            });
+            
+            // Add real-time validation
+            const requiredFields = document.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                field.addEventListener('blur', function() {
+                    const errorElement = document.getElementById(this.id + 'Error');
+                    if (!this.value.trim()) {
+                        this.classList.add('error');
+                        if (errorElement) {
+                            errorElement.textContent = 'This field is required';
+                        }
+                    } else {
+                        this.classList.remove('error');
+                        if (errorElement) {
+                            errorElement.textContent = '';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICCO - Infra Solutions | Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-left: -10px; /* shift to the left */
+            margin-right: 30px;
+        }
+        
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .logo-img {
+            max-height: 120px;
+            width: auto;
+            max-width: 150%;
+            height: auto;
+        }
+
+
+
+        .logo-p {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2CBCB5;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .footer-logo-img {
+            max-height: 120px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .footer-logo-img {
+                max-height: 80px;
+            }
+        }
+
+
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0px;
+            white-space: nowrap;
+            
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: #2CBCB5;
+            background: rgba(44, 188, 181, 0.1);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-item:hover {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icons .instagram { background: #E4405F; }
+        .social-icons .facebook { background: #1877F2; }
+        .social-icons .twitter { background: #1DA1F2; }
+        .social-icons .youtube { background: #FF0000; }
+        .social-icons .linkedin { background: #0A66C2; }
+
+        .award-badge {
+            width: 40px;
+            height: 40px;
+            background: #2CBCB5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Hero Carousel */
+        .hero-carousel {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #2CBCB5;
+            transform: scale(1.2);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 3;
+            border-radius: 5px;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .get-estimate-btn {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            background: #FFD700;
+            color: #333;
+            padding: 15px 30px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 999;
+            transform-origin: right center;
+            border: none;
+        }
+
+        /* Marquee Section */
+        .marquee-section {
+            background: #4A5568;
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #4A5568;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .stat-circle {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-circle:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #2CBCB5;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Vision Section */
+        .vision {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .vision-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+
+        /* What We Do Section */
+        .what-we-do {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px;
+            position: relative;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Latest Blogs Section */
+        .latest-blog {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .blog-content h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .blog-content h3.featured {
+            color: #2CBCB5;
+        }
+
+        .blog-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .blog-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .blog-stats span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .client-logo {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .client-logo:hover {
+            transform: translateY(-5px);
+        }
+        .client-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+
+
+        /* What Else We Provide Section */
+        .what-else {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .services-icons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-icon-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .service-icon-card h4 {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .testimonial-card h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .testimonial-role {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .company-logo {
+            background: #2CBCB5;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            text-align: left;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-main {
+            color: #2CBCB5;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #2CBCB5;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-list {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .blogs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .services-icons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blogs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .services-icons {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .get-estimate-btn {
+                display: none;
+            }
+            .carousel-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-circle {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="0.png" alt="PICCO Logo" class="logo-img">
+                    </div>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link active">HOME</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">ABOUT US</a></li>
+                        <li class="nav-item"><a href="whatwedo.html" class="nav-link">WHAT WE DO</a></li>
+                        <li class="nav-item">
+                            <a href="products.html" class="nav-link">
+                                PRODUCTS
+                                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                            </a>
+                            <div class="dropdown">
+                                <a href="residential.html" class="dropdown-item">RESIDENTIAL</a>
+                                <a href="commercial.html" class="dropdown-item">COMMERCIAL</a>
+                                <a href="furnitures.html" class="dropdown-item">FURNITURES</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">GALLERY</a></li>
+                        <li class="nav-item"><a href="vendor-registration.html" class="nav-link">VENDOR REGISTRATION</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+                        <li class="nav-item"><a href="contact-us.html" class="nav-link">CONTACT US</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="social-icons">
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="award-badge">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Carousel -->
+    <section class="hero-carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <img src="1.png" alt="Modern Office Interior">
+                <div class="carousel-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Where Quality<br>Meets Precision !!</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="2.png" alt="Corporate Office Design">
+                <div class="carousel-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Innovative Design<br>Solutions</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="3.png" alt="Modern Workspace">
+                <div class="carousel-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Excellence in<br>Every Detail</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="4.png" alt="Contemporary Office">
+                <div class="carousel-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Functional<br>Beauty</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="5.png" alt="Design Planning">
+                <div class="carousel-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Strategic<br>Planning</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="6.png" alt="Interior Finishing">
+                <div class="carousel-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Premium<br>Finishes</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="MEP Works">
+                <div class="carousel-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Complete<br>Solutions</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-nav carousel-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-nav carousel-next"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="carousel-indicators">
+            <div class="indicator active" data-slide="0"></div>
+            <div class="indicator" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
+            <div class="indicator" data-slide="4"></div>
+            <div class="indicator" data-slide="5"></div>
+            <div class="indicator" data-slide="6"></div>
+        </div>
+    </section>
+
+    <!-- Marquee Section -->
+    <section class="marquee-section">
+        <div class="marquee-content">
+            @ARCHITECTURE &nbsp;&nbsp;&nbsp;&nbsp; @CIVIL &nbsp;&nbsp;&nbsp;&nbsp; @INTERIOR &nbsp;&nbsp;&nbsp;&nbsp; @MEP [ MECHANICAL , ELECTRICAL & PLUMBING ] &nbsp;&nbsp;&nbsp;&nbsp; @ARCHITECTURE &nbsp;&nbsp;&nbsp;&nbsp; @CIVIL &nbsp;&nbsp;&nbsp;&nbsp; @INTERIOR &nbsp;&nbsp;&nbsp;&nbsp; @MEP [ MECHANICAL , ELECTRICAL & PLUMBING ]
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-circle">
+                        <div class="stat-content">
+                            <span class="stat-label">SINCE</span>
+                            <span class="stat-value">2015</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-circle">
+                        <div class="stat-content">
+                            <span class="stat-label">MATERIALS</span>
+                            <span class="stat-value">Superior</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-circle">
+                        <div class="stat-content">
+                            <span class="stat-label">SUPPORT</span>
+                            <span class="stat-value">Lifelong</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-circle">
+                        <div class="stat-content">
+                            <span class="stat-label">DESIGN</span>
+                            <span class="stat-value">Customer centric</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-circle">
+                        <div class="stat-content">
+                            <span class="stat-label">PROJECTS</span>
+                            <span class="stat-value">250+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision">
+        <div class="container">
+            <h2 class="section-title">Grow Your Vision</h2>
+            <div class="vision-content">
+                <p>PICCO team delivers creative interior design solutions from all residential to office interior design environments. We focus on conceptual interior design, renovation as well as project management for interior design works. We strive to create quality interiors design work and a total solution with our functionality expertise and skills.we are known for our reliability and attention to detail on every project making your experience with us authentically different. As a collective team, the designers create both modern and traditional designs with a unique twist, turning any space into a powerful expression of the client's personality. As a company, we prefer a collaborative approach to design that encourages our clients to develop and hone their own style and taste. We provide value to our clients by discouraging short-lived trends, opting instead for quality and timelessness. The final design ensures a beautiful, comfortable, and most importantly a functional space for our clients. We recognize that the most important element in our designs is the people who use them in the end. Whether yours is a modest family home or a palatial estate, a small business office or a grand resort, PICCO can take on any size project and implement a beautiful design transformation. Our team will design the interior environment you desire, utilizing fine-tuned vision and proven trustworthy business practices. With over a decade of experience in the design industry, our company maintains close relationships with top quality suppliers, fine artisans, and the most skilled sub-contractors. Our design experience and knowledge make the entire PICCO team valuable to our clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="what-we-do">
+        <div class="container">
+            <h2 class="section-title">WHAT WE DO</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Design & Consultant">
+                    </div>
+                    <div class="service-content">
+                        <h3>Design & Consultant</h3>
+                        <p>Design & Consultant include Space Planning, Office Interior Design, and Project Management.</p>
+                        <div class="service-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Interior Finishing">
+                    </div>
+                    <div class="service-content">
+                        <h3>Interior Finishing</h3>
+                        <p>We are good at Partition & Glass Works, Ceiling Design Works Hacking & Tiling Work.</p>
+                        <div class="service-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="MEP Works">
+                    </div>
+                    <div class="service-content">
+                        <h3>MEP Works</h3>
+                        <p>MEP Works includes Mechanical, Electrical Works, Fire Sprinkler Works and Air Conditioning & Plumbing.</p>
+                        <div class="service-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blogs Section -->
+    <section class="latest-blog">
+        <div class="container">
+            <h2 class="section-title">LATEST BLOGS</h2>
+            <div class="blogs-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Office Interior Design">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">Aug 6, 2024</div>
+                        <h3>Trends in Office Interior Designing in Chennai</h3>
+                        <p>Chennai, known for its rich cultural heritage and rapid industrial growth, is witnessing a transformation in its office spaces. The...</p>
+                        <div class="blog-stats">
+                            <span><i class="far fa-eye"></i> 29</span>
+                            <span><i class="far fa-heart"></i> 4</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Technology Integration">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">Aug 4, 2024</div>
+                        <h3>Technology Integration in Modern Office Design</h3>
+                        <p>The integration of technology in office design has become a fundamental aspect of creating efficient, productive, and flexible work...</p>
+                        <div class="blog-stats">
+                            <span><i class="far fa-eye"></i> 14</span>
+                            <span><i class="far fa-heart"></i> 6</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Latest Trends">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">Aug 6, 2024</div>
+                        <h3 class="featured">Latest Trends in Office Interior Designing</h3>
+                        <p>Office interior design has evolved significantly in recent years, with a shift towards creating environments that promote productivity...</p>
+                        <div class="blog-stats">
+                            <span><i class="far fa-eye"></i> 29</span>
+                            <span><i class="far fa-heart"></i> 6</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Interior Design Trends">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">Jul 29, 2024</div>
+                        <h3>Exploring the Latest Trends in Interior Design for 2024</h3>
+                        <p>As we step into 2024, the world of interior design continues to evolve, blending innovation with timeless styles to create spaces that...</p>
+                        <div class="blog-stats">
+                            <span><i class="far fa-eye"></i> 17</span>
+                            <span><i class="far fa-heart"></i> 5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Clients Section -->
+<section class="clients">
+    <div class="container">
+        <h2 class="section-title">OUR PRESTIGIOUS CLIENTS</h2>
+        <div class="clients-grid">
+            <div class="client-logo"><img src="7.png" alt="EVERSENDAI Logo"></div>
+            <div class="client-logo"><img src="images/clients/mphasis.png" alt="Mphasis Logo"></div>
+            <div class="client-logo"><img src="images/clients/virtusa.png" alt="Virtusa Logo"></div>
+            <div class="client-logo"><img src="images/clients/novac.png" alt="NOVAC Logo"></div>
+            <div class="client-logo"><img src="images/clients/ginger.png" alt="GINGER Logo"></div>
+            <div class="client-logo"><img src="images/clients/cbre.png" alt="CBRE Logo"></div>
+            <div class="client-logo"><img src="images/clients/krds.png" alt="KRDS Info Logo"></div>
+            <div class="client-logo"><img src="images/clients/dedalus.png" alt="Dedalus Logo"></div>
+            <div class="client-logo"><img src="images/clients/pencilmonk.png" alt="Pencil Monk Logo"></div>
+            <div class="client-logo"><img src="images/clients/federalbank.png" alt="Federal Bank Logo"></div>
+            <div class="client-logo"><img src="images/clients/poclain.png" alt="POCLAIN Logo"></div>
+            <div class="client-logo"><img src="images/clients/easwari.png" alt="EASWARI Logo"></div>
+            <div class="client-logo"><img src="images/clients/olympia.png" alt="OLYMPIA Logo"></div>
+            <div class="client-logo"><img src="images/clients/prestige.png" alt="Prestige Logo"></div>
+            <div class="client-logo"><img src="images/clients/apollo.png" alt="Apollo Logo"></div>
+            <div class="client-logo"><img src="images/clients/wayoof.png" alt="Wayooft Logo"></div>
+            <div class="client-logo"><img src="images/clients/dlfa.png" alt="DLFA Logo"></div>
+            <div class="client-logo"><img src="images/clients/blend.png" alt="Blend Logo"></div>
+            <div class="client-logo"><img src="images/clients/gocolors.png" alt="GO COLORS! Logo"></div>
+            <div class="client-logo"><img src="images/clients/spacematrix.png" alt="SPACE MATRIX Logo"></div>
+            <div class="client-logo"><img src="images/clients/greenbuilding.png" alt="Green Building Logo"></div>
+            <div class="client-logo"><img src="images/clients/krishna.png" alt="Krishna Group Logo"></div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- What Else We Provide Section -->
+    <section class="what-else">
+        <div class="container">
+            <h2 class="section-title">WHAT ELSE WE PROVIDE</h2>
+            <div class="services-icons">
+                <div class="service-icon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h4>Project Management</h4>
+                </div>
+                <div class="service-icon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h4>Furniture Works</h4>
+                </div>
+                <div class="service-icon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h4>Soft Finishing</h4>
+                </div>
+                <div class="service-icon-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Renovation Works</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">TESTIMONIALS</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>AFZAL SHAIK</h4>
+                    <p class="testimonial-role">Divisional Manager</p>
+                    <div class="company-logo">wayooft</div>
+                    <p class="testimonial-text">We have awarded Picco Infra on many occasions in the past on various projects and have found them to be conscientious and thorough in their work with attention to details. We would recommend them as a trustworthy interior contracting company.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>P SATHISH KUMAR</h4>
+                    <p class="testimonial-role">Admin Manager</p>
+                    <div class="company-logo">NOVAC</div>
+                    <p class="testimonial-text">The quality of service and work was excellent, without any delay they handover the project. Right from designing, till execution the coordination was on perfect.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>AMRISH</h4>
+                    <p class="testimonial-role">Chennai Head</p>
+                    <div class="company-logo">SPACE MATRIX</div>
+                    <p class="testimonial-text">Working with Picco Infra, was a hassle-free professional expertise solution. Timely completion by the team should be appreciated even under corporate safety concerns. Overall, it was a completely satisfied experience in working with the team and highly recommend the company for other Organisations.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>SATHISH</h4>
+                    <p class="testimonial-role">Sr. Manager Planning</p>
+                    <div class="company-logo">EVERSENDAI</div>
+                    <p class="testimonial-text">Picco Infra exceeded our high standards at Eversendai with their excellence and attention to detail. Their professionalism and expertise in project management and interior finishing resulted in outstanding outcomes. Highly recommended for any construction or renovation projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                         <div class="logo-icon">
+                            <img src="0.png" alt="PICCO Logo" class="footer-logo-img">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Picco Infra Solutions Pvt Ltd</h4>
+                        <p>Kres Building, 103/2, Uthamar Gandhi Road,<br>
+                        Nungambakkam, Chennai, Tamil Nadu<br>
+                        600034</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>info@piccoinfra.in<br>
+                        sales@piccoinfra.in<br>
+                        www.piccoinfra.in</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>Privacy statement<br>
+                        Cookie statement<br>
+                        Terms of service<br>
+                        Site map</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 | powered by Bizmantra Business & IT Solutions Pvt Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Get Free Estimate Button -->
+    <button class="get-estimate-btn">GET FREE ESTIMATE</button>
+
+    <script>
+        // Carousel functionality
+        class ImageCarousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.slides = document.querySelectorAll('.carousel-slide');
+                this.indicators = document.querySelectorAll('.indicator');
+                this.prevBtn = document.querySelector('.carousel-prev');
+                this.nextBtn = document.querySelector('.carousel-next');
+                this.totalSlides = this.slides.length;
+                this.autoPlayInterval = null;
+                
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                this.startAutoPlay();
+            }
+            
+            bindEvents() {
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => this.goToSlide(index));
+                });
+                
+                // Pause autoplay on hover
+                const carousel = document.querySelector('.hero-carousel');
+                carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+                carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+            }
+            
+            goToSlide(slideIndex) {
+                // Remove active class from current slide and indicator
+                this.slides[this.currentSlide].classList.remove('active');
+                this.indicators[this.currentSlide].classList.remove('active');
+                
+                // Update current slide
+                this.currentSlide = slideIndex;
+                
+                // Add active class to new slide and indicator
+                this.slides[this.currentSlide].classList.add('active');
+                this.indicators[this.currentSlide].classList.add('active');
+            }
+            
+            nextSlide() {
+                const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+                this.goToSlide(nextIndex);
+            }
+            
+            prevSlide() {
+                const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.goToSlide(prevIndex);
+            }
+            
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 4000); // Change slide every 4 seconds
+            }
+            
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+        }
+
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            new ImageCarousel();
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html>

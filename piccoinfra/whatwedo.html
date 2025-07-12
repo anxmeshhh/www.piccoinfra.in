@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICCO - Infra Solutions | What We Do</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            max-height: 180px;
+            width: auto;
+            max-width: 200%;
+            height: auto;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-p {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2CBCB5;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .footer-logo-img {
+            max-height: 90px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .footer-logo-img {
+                max-height: 80px;
+            }
+        }
+
+
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0px;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: #2CBCB5;
+            background: rgba(44, 188, 181, 0.1);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-item:hover {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icons .instagram { background: #E4405F; }
+        .social-icons .facebook { background: #1877F2; }
+        .social-icons .twitter { background: #1DA1F2; }
+        .social-icons .youtube { background: #FF0000; }
+        .social-icons .linkedin { background: #0A66C2; }
+
+        .award-badge {
+            width: 40px;
+            height: 40px;
+            background: #2CBCB5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #2CBCB5 0%, #1a9a94 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service Sections - New Layout */
+        .service-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .service-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .service-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .service-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .service-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #2CBCB5;
+        }
+
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #2CBCB5;
+        }
+
+        .service-hero-image {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .service-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .service-description {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-description p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        .service-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Theme Colors for Different Sections */
+        .renovation-works .service-title::before,
+        .renovation-works .service-title::after {
+            background: #FF8C00;
+        }
+
+        .interior-finishing .service-title::before,
+        .interior-finishing .service-title::after {
+            background: #2CBCB5;
+        }
+
+        .mep-works .service-title::before,
+        .mep-works .service-title::after {
+            background: #4682B4;
+        }
+
+        .design-consultant .service-title::before,
+        .design-consultant .service-title::after {
+            background: #8B4513;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #2CBCB5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-main {
+            color: #2CBCB5;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #2CBCB5;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-list {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .service-content {
+                gap: 40px;
+            }
+            
+            .service-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .service-title {
+                font-size: 2rem;
+            }
+            
+            .service-hero-image {
+                height: 250px;
+                margin-bottom: 30px;
+            }
+            
+            .service-description p {
+                font-size: 15px;
+                text-align: left;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .service-title {
+                font-size: 1.8rem;
+            }
+            
+            .service-hero-image {
+                height: 200px;
+            }
+            
+            .service-section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="0.png" alt="PICCO Logo" class="logo-img">
+                    </div>
+                    
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">ABOUT US</a></li>
+                        <li class="nav-item"><a href="whatwedo.html" class="nav-link active">WHAT WE DO</a></li>
+                        <li class="nav-item">
+                            <a href="products.html" class="nav-link">
+                                PRODUCTS
+                                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                            </a>
+                            <div class="dropdown">
+                                <a href="residential.html" class="dropdown-item">RESIDENTIAL</a>
+                                <a href="commercial.html" class="dropdown-item">COMMERCIAL</a>
+                                <a href="furnitures.html" class="dropdown-item">FURNITURES</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">GALLERY</a></li>
+                        <li class="nav-item"><a href="vendor-registration.html" class="nav-link">VENDOR REGISTRATION</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+                        <li class="nav-item"><a href="contact-us.html" class="nav-link">CONTACT US</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="social-icons">
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="award-badge">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">WHAT WE DO</h1>
+            <p class="page-subtitle">Comprehensive solutions for all your infrastructure and interior design needs</p>
+        </div>
+    </section>
+
+    <!-- Design & Consultant Section -->
+    <section class="service-section design-consultant">
+        <div class="container">
+            <div class="service-header">
+                <h2 class="service-title">DESIGN & CONSULTANT</h2>
+            </div>
+            <div class="service-hero-image">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Design & Consultant">
+            </div>
+            <div class="service-description">
+                <p>From initial concept to final execution, our design and build management services ensure that your projects are delivered on time and to the highest standards. Our team of experts collaborates closely with clients to understand their vision and requirements, translating them into detailed plans that guide the entire project. By maintaining clear communication and a thorough understanding of the project goals, we lay a solid foundation for success from the outset.</p>
+                
+                <p>We integrate design and construction processes for a cohesive approach that maximizes efficiency and quality. This integrated methodology allows us to streamline workflows, reduce costs, and minimize delays. Our team meticulously coordinates every phase of the project, ensuring that each element aligns perfectly with the overall design intent and functional requirements.</p>
+                
+                <p>By managing every phase with meticulous attention to detail, we ensure that your vision is realized seamlessly. From coordinating with architects and overseeing construction to managing budgets and timelines, our dedicated team is committed to excellence and innovation in every project we undertake. With Picco Infra, you can trust that your project will be executed flawlessly, resulting in a finished product that exceeds your expectations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interior Finishing Section -->
+    <section class="service-section interior-finishing">
+        <div class="container">
+            <div class="service-header">
+                <h2 class="service-title">INTERIOR FINISHING</h2>
+            </div>
+            <div class="service-hero-image">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-aKMPOvdDslSM7iVA1NZPCE4uP0KeyW.png" alt="Interior Finishing">
+            </div>
+            <div class="service-description">
+                <p>We excel in partition and glass works, providing customized solutions that enhance both the functionality and aesthetics of your spaces. Our team of skilled professionals uses high-quality materials and innovative techniques to create partitions that offer privacy and flexibility while maintaining an open and modern feel. Whether for residential or commercial settings, our glass works add a touch of elegance and sophistication, perfectly balancing form and function.</p>
+                
+                <p>Our ceiling design works are crafted to transform ordinary spaces into extraordinary ones. We offer a wide range of design options, from classic to contemporary, ensuring that each ceiling complements the overall interior design. By integrating advanced lighting solutions and intricate design elements, we create stunning ceilings that enhance the ambiance and character of any room.</p>
+                
+                <p>Hacking and tiling works are essential components of our renovation services, and we take pride in delivering precision and quality in every project. Our experts carefully execute hacking to remove unwanted structures without compromising the integrity of the building. Following this, our tiling works ensure a flawless finish, with a variety of tile options to suit different styles and preferences. With a keen eye for detail and commitment to excellence, we ensure that your spaces are both beautiful and durable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEP Works Section -->
+    <section class="service-section soft-finishing">
+        <div class="container">
+            <div class="service-header">
+                <h2 class="service-title">MECHANICAL, ELECTRICAL & PLUMBING WORKS</h2>
+            </div>
+            <div class="service-hero-image">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="MEP Works">
+            </div>
+            <div class="service-description">
+                <p>Our MEP (Mechanical, Electrical and Plumbing) Works encompass a wide range of essential services, including electrical works, fire sprinkler systems, and air conditioning & plumbing. We prioritize safety, efficiency, and reliability in all our MEP (MECHANICAL, ELECTRICAL & PLUMBING) projects, ensuring that each system is designed and installed to meet the highest industry standards.</p>
+                
+                <h3>1. Electrical Works</h3>
+                <p>Our electrical works cover everything from initial wiring and installation to ongoing maintenance and upgrades. We use top-quality materials and adhere to strict safety protocols to ensure that your electrical systems are both efficient and secure. Our skilled electricians are experienced in handling projects of all sizes, providing reliable solutions that power your spaces effectively.</p>
+                
+                <h3>2. Fire Sprinkler Works</h3>
+                <p>Fire safety is a critical component of any building, and our fire sprinkler works are designed to provide maximum protection. We offer comprehensive fire sprinkler system design, installation, and maintenance services, ensuring that your property is equipped with state-of-the-art fire suppression technology. Our systems are tailored to meet specific building codes and safety requirements, providing peace of mind in case of emergencies.</p>
+                
+                <h3>3. Air Conditioning & Plumbing</h3>
+                <p>Comfort and functionality are at the heart of our air conditioning and plumbing services. We provide expert installation and maintenance of air conditioning systems to ensure optimal climate control for your spaces. Our plumbing services include everything from pipe installation and repair to advanced plumbing solutions, ensuring a reliable and efficient water supply system. With Picco Infra, you can trust that your MEP (MECHANICAL, ELECTRICAL & PLUMBING) needs are handled with professionalism and expertise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Management Section -->
+    <section class="service-section soft-finishing">
+        <div class="container">
+            <div class="service-header">
+                <h2 class="service-title">PROJECT MANAGEMENT</h2>
+            </div>
+            <div class="service-hero-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Project Management">
+            </div>
+            <div class="service-description">
+                <p>Picco Infra is dedicated to delivering top-notch project management services that ensure the successful completion of projects on time, within budget, and to the highest quality standards. Our comprehensive project management approach encompasses every phase of the project lifecycle, from initial planning to final execution, ensuring seamless coordination and exceptional results. Here's a detailed look at the project management services offered by Picco Infra:</p>
+                
+                <h3>1. Cost Budgeting Control</h3>
+                <p>Effective cost management is crucial for the success of any project. Picco Infra specializes in developing accurate and realistic budgets that align with our clients' financial objectives. Our cost budgeting control services include: Detailed Cost Estimation: We provide comprehensive cost estimates based on thorough analysis and market research. Budget Monitoring: Continuous monitoring of project expenses to ensure adherence to the approved budget. Cost Reporting: Regular financial reports to keep stakeholders informed of the project's financial status. Cost Optimization: Identifying and implementing cost-saving measures without compromising quality.</p>
+                
+                <h3>2. Site Coordination</h3>
+                <p>Successful project execution requires meticulous site coordination to ensure all activities are aligned and efficiently managed. Picco Infra excels in: Scheduling and Planning: Developing detailed project schedules that outline each phase and task. Resource Allocation: Ensuring the availability of necessary resources, including labor, materials, and equipment. Communication Management: Facilitating effective communication between all project stakeholders to avoid misunderstandings and delays. On-site Supervision: Providing on-site managers to oversee daily operations and ensure compliance with plans and standards.</p>
+                
+                <h3>3. Design & Build Management</h3>
+                <p>Our design and build management services streamline the entire process, from conceptualization to completion. Picco Infra's approach includes: Integrated Project Delivery: Combining design and construction phases to enhance efficiency and collaboration. Concept Development: Working closely with clients to develop design concepts that meet their vision and functional requirements. Design Coordination: Ensuring seamless integration of architectural, structural, and MEP (mechanical, electrical, plumbing) designs. Construction Oversight: Managing the construction process to ensure it adheres to the design, quality, and safety standards.</p>
+                
+                <h3>4. Quality Assurance & Control</h3>
+                <p>Quality is a cornerstone of Picco Infra's project management philosophy. Our quality assurance and control services include: Quality Planning: Developing a quality management plan that outlines standards, procedures, and responsibilities. Inspections and Testing: Regular inspections and testing to ensure materials and workmanship meet specified standards. Compliance Monitoring: Ensuring compliance with industry regulations, codes, and standards. Continuous Improvement: Implementing feedback mechanisms to identify and address areas for improvement throughout the project.</p>
+                
+                <h3>5. Risk Management</h3>
+                <p>Identifying and mitigating risks is essential for project success. Picco Infra's risk management services include: Risk Identification: Systematically identifying potential risks that could impact the project. Risk Analysis: Assessing the likelihood and impact of identified risks. Risk Mitigation: Developing and implementing strategies to minimize or eliminate risks. Contingency Planning: Preparing contingency plans to address unforeseen issues effectively.</p>
+                
+                <h3>6. Stakeholder Management</h3>
+                <p>Effective stakeholder management ensures that the needs and expectations of all parties involved are addressed. Picco Infra's services include: Stakeholder Identification: Identifying all stakeholders, including clients, contractors, suppliers, and regulatory bodies. Engagement Strategies: Developing strategies to engage and communicate with stakeholders effectively. Expectation Management: Ensuring stakeholders' expectations are realistic and aligned with project goals. Feedback Mechanisms: Implementing channels for stakeholders to provide feedback and voice concerns.</p>
+                
+                <h3>7. Project Closeout</h3>
+                <p>The project closeout phase is critical to ensure a smooth transition from construction to operation. Picco Infra's closeout services include: Final Inspections: Conducting thorough inspections to ensure all work is completed to the required standards. Documentation: Compiling comprehensive project documentation, including as-built drawings, operation manuals, and warranties. Client Handover: Ensuring the client is fully briefed on the operation and maintenance of the completed project. Post-Project Evaluation: Conducting evaluations to identify lessons learned and areas for future improvement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Furniture Works Section -->
+    <section class="service-section soft-finishing">
+        <div class="container">
+            <div class="service-header">
+                <h2 class="service-title">FURNITURE WORKS</h2>
+            </div>
+            <div class="service-hero-image">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Furniture Works">
+            </div>
+            <div class="service-description">
+                <p>At Picco Infra, we specialize in creating functional, stylish, and customized furniture solutions tailored to meet the unique needs of our clients. Our furniture works encompass a wide range of services, from designing and manufacturing office furniture to crafting custom-made pieces for homes and commercial spaces. Here's a detailed overview of the furniture works services offered by Picco Infra:</p>
+                
+                <h3>1. Office Furniture</h3>
+                <p>Creating a productive and comfortable office environment requires well-designed furniture that supports the needs of the workforce. Picco Infra offers comprehensive office furniture solutions, including: Desks and Workstations: Ergonomically designed desks and workstations that promote comfort and productivity. Options include adjustable height desks, collaborative workstations, and modular systems that can be customized to fit any office layout. Seating Solutions: A wide range of seating options, including ergonomic office chairs, executive chairs, conference room seating, and lounge furniture. Our seating solutions are designed for comfort, durability, and style. Storage Solutions: Functional and stylish storage solutions such as filing cabinets, shelving units, and lockers. These pieces are designed to keep office spaces organized and clutter-free. Conference Room Furniture: High-quality conference tables, chairs, and presentation equipment that enhance the functionality and aesthetics of meeting rooms. Reception Area Furniture: Stylish and welcoming furniture for reception areas, including reception desks, seating, and display units.</p>
+                
+                <h3>2. Custom Made Furniture</h3>
+                <p>Picco Infra excels in crafting custom-made furniture that reflects the unique style and functional requirements of our clients. Our custom furniture services include: Bespoke Design: Collaborating with clients to create bespoke furniture designs that align with their vision and space requirements. Our design team works closely with clients to ensure every detail is tailored to their preferences. High-Quality Materials: Using only the finest materials to create durable and aesthetically pleasing furniture pieces. We offer a wide selection of materials, including wood, metal, glass, and upholstery options. Precision Craftsmanship: Our skilled craftsmen employ precision techniques to bring custom designs to life. Attention to detail and quality craftsmanship are the hallmarks of our custom furniture. Versatile Solutions: Custom furniture solutions for a variety of spaces, including residential, commercial, and hospitality environments. Whether it's a unique dining table, a statement piece for a living room, or custom cabinetry, we deliver exceptional results.</p>
+                
+                <h3>3. Chairs & Sofas</h3>
+                <p>Comfortable and stylish seating is essential for any space. Picco Infra offers a diverse range of chairs and sofas designed to enhance both residential and commercial interiors: Living Room Sofas: A variety of sofa designs, including sectional sofas, loveseats, and recliners. Our sofas are available in different styles, fabrics, and configurations to suit any living room decor. Dining Chairs: Elegant and comfortable dining chairs that complement dining tables and enhance the dining experience. Options include upholstered chairs, wooden chairs, and modern designs. Office Chairs: Ergonomic office chairs that provide support and comfort for long hours of work. Our office chairs are designed with adjustable features to suit individual needs. Accent Chairs: Stylish accent chairs that add a touch of elegance to any room. These chairs are available in various designs, from contemporary to classic, and can be customized with different fabrics and finishes.</p>
+                
+                <h3>4. Furniture for Commercial Spaces</h3>
+                <p>Picco Infra provides comprehensive furniture solutions for commercial spaces, including retail stores, restaurants, hotels, and more: Retail Store Fixtures: Custom-designed retail fixtures and display units that enhance product presentation and maximize space utilization. Restaurant Furniture: Durable and stylish furniture for restaurants, cafes, and bars. Our offerings include dining tables, chairs, bar stools, and banquette seating. Hotel Furniture: Elegant and functional furniture for hotel rooms, lobbies, and common areas. Our hotel furniture solutions include beds, bedside tables, desks, and lounge seating. Conference and Event Furniture: Flexible furniture solutions for conference centers and event venues. Our range includes stackable chairs, folding tables, and modular seating systems that can be easily reconfigured.</p>
+                
+                <h3>5. Furniture Refurbishment</h3>
+                <p>In addition to new furniture, Picco Infra offers furniture refurbishment services to breathe new life into existing pieces. Our refurbishment services include: Reupholstery: Reupholstering chairs, sofas, and other upholstered furniture with new fabric or leather to give them a fresh look. Repair and Restoration: Repairing and restoring damaged furniture to its original condition. This includes fixing structural issues, refinishing surfaces, and replacing hardware. Custom Modifications: Making custom modifications to existing furniture to better suit the client's needs or aesthetic preferences.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Finishing Section -->
+    <section class="service-section soft-finishing">
+        <div class="container">
+            <div class="service-header">
+                <h2 class="service-title">SOFT FINISHING</h2>
+            </div>
+            <div class="service-hero-image">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Soft Finishing">
+            </div>
+            <div class="service-description">
+                <p>At Picco Infra, we understand that the finishing touches in an interior space play a crucial role in creating an inviting and aesthetically pleasing environment. Our soft finishing services encompass a wide range of solutions designed to enhance the beauty and functionality of any space. From flooring and wall treatments to window coverings and decorative elements, Picco Infra delivers exceptional quality and style. Here's a detailed overview of the soft finishing services we offer:</p>
+                
+                <h3>1. Carpet & Laminate Flooring</h3>
+                <p>Flooring is a fundamental element of interior design, setting the tone for the entire space. Picco Infra offers a variety of flooring options to suit different needs and preferences: Carpet Flooring - Comfort and Warmth: Carpets add warmth and comfort to any room, making them ideal for residential and commercial spaces. Variety of Styles: We provide a wide range of carpet styles, colors, and textures to complement any interior design. Durability: Our carpets are made from high-quality materials that ensure durability and longevity. Acoustic Benefits: Carpets help reduce noise levels, creating a quieter and more comfortable environment. Laminate Flooring - Aesthetic Appeal: Laminate flooring offers the look of natural wood or stone at a more affordable price. Durability: Resistant to scratches, stains, and wear, laminate flooring is ideal for high-traffic areas. Easy Maintenance: Laminate floors are easy to clean and maintain, making them a practical choice for busy spaces. Variety of Designs: Available in various designs and finishes, laminate flooring can mimic the appearance of hardwood, stone, or tile.</p>
+                
+                <h3>2. Wallpaper Works</h3>
+                <p>Wall treatments can transform the look and feel of any space. Picco Infra offers comprehensive wallpaper services to add style and personality to your interiors: Wide Selection: Choose from an extensive range of wallpapers, including patterns, textures, and murals, to suit your design vision. Professional Installation: Our experienced team ensures precise and flawless wallpaper installation for a seamless finish. Customization: We offer custom wallpaper designs to create unique and personalized spaces. Durability: High-quality wallpapers that are resistant to fading, peeling, and damage, ensuring long-lasting beauty.</p>
+                
+                <h3>3. Window Blinds & Curtains</h3>
+                <p>Window treatments are essential for controlling light, providing privacy, and enhancing the overall aesthetic of a space. Picco Infra provides a variety of window coverings to meet your needs: Window Blinds - Versatility: Available in different styles, including roller blinds, vertical blinds, and Venetian blinds, to suit various interior themes. Light Control: Blinds offer precise control over light and privacy levels, making them ideal for both residential and commercial spaces. Materials: Choose from a range of materials, such as wood, aluminum, and fabric, to match your decor. Customization: Custom-made blinds to fit any window size and shape, ensuring a perfect fit. Curtains - Elegance: Curtains add a touch of elegance and sophistication to any room, enhancing its overall aesthetic. Variety: Available in a wide range of fabrics, colors, and patterns to complement your interior design. Functionality: Curtains provide excellent light control and insulation, contributing to energy efficiency and comfort. Customization: Tailored curtain solutions to fit your specific requirements, including custom lengths, styles, and accessories.</p>
+                
+                <h3>4. Decorative Elements</h3>
+                <p>The finishing touches can make all the difference in transforming a space from ordinary to extraordinary. Picco Infra offers a range of decorative elements to enhance your interiors: Moldings and Trims - Detail and Dimension: Add architectural interest and detail to your space with high-quality moldings and trims. Customization: Available in various styles and profiles to match your design preferences. Soft Furnishings - Cushions and Throws: Enhance comfort and style with a selection of decorative cushions and throws. Bespoke Solutions: Custom-made soft furnishings to match your interior decor and color scheme. Wall Art and Mirrors - Aesthetic Appeal: Curate a collection of wall art and mirrors to add character and visual interest to your space. Customization: Personalized wall art solutions to reflect your taste and style. Rugs and Mats - Comfort and Warmth: Add comfort and warmth to your floors with a variety of rugs and mats. Design Options: Choose from different styles, patterns, and materials to complement your decor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renovation Works Section -->
+    <section class="service-section soft-finishing">
+        <div class="container">
+            <div class="service-header">
+                <h2 class="service-title">RENOVATION WORKS</h2>
+            </div>
+            <div class="service-hero-image">
+                <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Renovation Works">
+            </div>
+            <div class="service-description">
+                <p>At Picco Infra, we specialize in comprehensive renovation services designed to transform and revitalize your spaces. Whether it's a residential, commercial, or industrial property, our renovation works focus on enhancing functionality, aesthetics, and value. With a commitment to quality, efficiency, and client satisfaction, Picco Infra delivers exceptional results tailored to your specific needs. Here's an overview of the renovation works services we offer:</p>
+                
+                <h3>1. Reinstatement Works</h3>
+                <p>Reinstatement works are essential for returning a property to its original condition, often required at the end of a lease or before a property handover. Our reinstatement services include: Space Clearing: Removing partitions, fixtures, and fittings installed during the tenancy. Repair and Restoration: Restoring walls, ceilings, and floors to their original condition, including patching, painting, and refinishing. Utility Disconnection: Safely disconnecting and removing electrical, plumbing, and HVAC installations added during the tenancy. Compliance with Regulations: Ensuring all reinstatement works meet local regulations and landlord requirements.</p>
+                
+                <h3>2. Protection & Hoarding Works</h3>
+                <p>During renovation projects, it's crucial to protect existing structures and areas not undergoing renovation. Our protection and hoarding services ensure safety and minimize disruption: Protective Barriers: Installing temporary barriers and hoarding to protect existing structures, fixtures, and finishes from damage. Dust and Debris Control: Implementing measures to control dust and debris, ensuring a clean and safe environment during renovation. Safety Signage: Providing clear signage to guide workers and occupants, enhancing safety on-site. Noise Reduction: Implementing noise control measures to minimize disruption to adjacent areas and occupants.</p>
+                
+                <h3>3. Hacking Works</h3>
+                <p>Hacking works involve the removal of existing structures, surfaces, and finishes to prepare for new installations. Picco Infra's hacking services include: Wall and Floor Hacking: Removing old tiles, concrete, and masonry to prepare surfaces for new installations. Structural Alterations: Demolishing non-load-bearing walls and partitions to reconfigure space layouts. Precision and Safety: Ensuring hacking works are carried out with precision and adherence to safety standards to avoid damage to structural elements.</p>
+                
+                <h3>4. Interior Finishing</h3>
+                <p>Our interior finishing services focus on providing high-quality finishes that enhance the aesthetics and functionality of your spaces. These services include: Partition & Glass Works - Custom Partitions: Installing custom partitions to create functional and stylish spaces, including drywall, glass, and acoustic partitions. Glass Installations: Providing glass walls, doors, and partitions to enhance natural light and create an open, modern look. Ceiling Design Works - Suspended Ceilings: Installing suspended ceilings with various designs and materials to improve acoustics and aesthetics. Feature Ceilings: Creating unique ceiling designs, such as coffered, tray, or drop ceilings, to add architectural interest. Hacking & Tiling Works - Tile Removal: Carefully removing old tiles to prepare surfaces for new installations. Tile Installation: Installing a variety of tiles, including ceramic, porcelain, and natural stone, with precise alignment and finish.</p>
+                
+                <h3>5. M & E Works</h3>
+                <p>Mechanical and electrical (M&E) works are critical components of any renovation project, ensuring the functionality and safety of building systems. Our M&E services include: Electrical Works - Wiring and Rewiring: Installing new electrical systems or upgrading existing ones to meet current standards and requirements. Lighting Solutions: Providing a range of lighting solutions, from general lighting to task and accent lighting, with energy-efficient options. Power Distribution: Designing and installing power distribution systems to ensure reliable and safe electricity supply. Fire Sprinkler Works - System Design and Installation: Designing and installing fire sprinkler systems to provide effective fire protection. Maintenance and Testing: Regular maintenance and testing of fire sprinkler systems to ensure they remain operational and compliant with regulations. Air Conditioning & Plumbing - HVAC Systems: Installing and upgrading heating, ventilation, and air conditioning systems for optimal climate control and energy efficiency. Plumbing Works: Providing comprehensive plumbing services, including installation, repair, and maintenance of water supply and drainage systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <img src="0.png" alt="PICCO Logo" class="footer-logo-img">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Picco Infra Solutions Pvt Ltd</h4>
+                        <p>Kres Building, 103/2, Uthamar Gandhi Road,<br>
+                        Nungambakkam, Chennai, Tamil Nadu<br>
+                        600034</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>info@piccoinfra.in<br>
+                        sales@piccoinfra.in<br>
+                        www.piccoinfra.in</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>Privacy statement<br>
+                        Cookie statement<br>
+                        Terms of service<br>
+                        Site map</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 | powered by Bizmantra Business & IT Solutions Pvt Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Get Free Estimate Button -->
+
+    <script>
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        function initSmoothScrolling() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initSmoothScrolling();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICCO - Infra Solutions | Commercial Projects</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            max-height: 180px;
+            width: auto;
+            max-width: 200%;
+            height: auto;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-p {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2CBCB5;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .footer-logo-img {
+            max-height: 90px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .footer-logo-img {
+                max-height: 80px;
+            }
+        }
+
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0px;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: #2CBCB5;
+            background: rgba(44, 188, 181, 0.1);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-item.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .dropdown-item:hover:not(.active) {
+            background: rgba(44, 188, 181, 0.1);
+            color: #2CBCB5;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icons .instagram { background: #E4405F; }
+        .social-icons .facebook { background: #1877F2; }
+        .social-icons .twitter { background: #1DA1F2; }
+        .social-icons .youtube { background: #FF0000; }
+        .social-icons .linkedin { background: #0A66C2; }
+
+        .award-badge {
+            width: 40px;
+            height: 40px;
+            background: #2CBCB5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+            margin-top: 80px;
+            background: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover; /* Unsplash image */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-title {
+            color: white;
+            font-size: 4rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .content-block {
+            margin-bottom: 40px;
+        }
+
+        .content-block h2 {
+            font-size: 2rem;
+            color: #2CBCB5;
+            margin-bottom: 20px;
+        }
+
+        .content-block h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .content-block p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .content-block ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .content-block ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .content-block ul li::before {
+            content: '\2022'; /* Bullet point */
+            color: #2CBCB5;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+
+        .get-estimate-btn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            background: #FFD700;
+            color: #333;
+            padding: 15px 30px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 999;
+            transform-origin: right center;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-main {
+            color: #2CBCB5;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #2CBCB5;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-list {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .content-block h2 {
+                font-size: 1.8rem;
+            }
+            .content-block h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .get-estimate-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-block h2 {
+                font-size: 1.5rem;
+            }
+            .content-block h3 {
+                font-size: 1.2rem;
+            }
+            .content-block p, .content-block ul li {
+                font-size: 14px;
+            }
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="0.png" alt="PICCO Logo" class="logo-img">
+                    </div>
+                    
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">ABOUT US</a></li>
+                        <li class="nav-item"><a href="whatwedo.html" class="nav-link">WHAT WE DO</a></li>
+                        <li class="nav-item">
+                            <a href="products.html" class="nav-link active">
+                                PRODUCTS
+                                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                            </a>
+                            <div class="dropdown">
+                                <a href="residential.html" class="dropdown-item">RESIDENTIAL</a>
+                                <a href="commercial.html" class="dropdown-item active">COMMERCIAL</a>
+                                <a href="furnitures.html" class="dropdown-item">FURNITURES</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">GALLERY</a></li>
+                        <li class="nav-item"><a href="vendor-registration.html" class="nav-link">VENDOR REGISTRATION</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+                        <li class="nav-item"><a href="contact-us.html" class="nav-link">CONTACT US</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="social-icons">
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="award-badge">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <h1 class="hero-title">COMMERCIAL PROJECTS</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-block">
+                <p>Welcome to Picco Infra, your trusted partner in transforming commercial interiors. With over million's of square feet of commercial projects completed, we have the expertise and experience to deliver exceptional results across various sectors, including IT companies, the hospitality industry, small and mid-sized office spaces, and recreation clubs. Our commitment to quality, functionality, and aesthetics ensures that every project we undertake enhances the value and appeal of your commercial space.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>Our Commercial Services</h2>
+                
+                <h3>1. IT Companies</h3>
+                <p>Create innovative and productive workspaces that inspire creativity and collaboration. Our services include:</p>
+                <ul>
+                    <li>Open Plan Offices: Design and layout solutions that promote open communication and teamwork.</li>
+                    <li>Private Offices and Meeting Rooms: Stylish and functional spaces for focused work and meetings.</li>
+                    <li>Breakout Areas: Comfortable and inviting areas for employees to relax and recharge.</li>
+                    <li>High-Tech Infrastructure: Seamless integration of IT and AV solutions to support your business needs.</li>
+                    <li>Ergonomic Furniture: Custom furniture solutions designed for comfort and productivity.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>2. Hospitality Sector</h3>
+                <p>Enhance the guest experience with our bespoke interior solutions for the hospitality industry. We offer:</p>
+                <ul>
+                    <li>Luxurious Lobbies: Elegant and welcoming entrance areas that set the tone for your establishment.</li>
+                    <li>Guest Rooms and Suites: Beautifully designed rooms that offer comfort and style.</li>
+                    <li>Restaurants and Bars: Ambiance-rich dining and drinking spaces that attract and delight guests.</li>
+                    <li>Conference and Banquet Halls: Versatile spaces for events, meetings, and conferences.</li>
+                    <li>Recreational Facilities: Well-designed fitness centers, spas, and pools that enhance guest satisfaction.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>3. Small & Mid-Sized Office Spaces</h3>
+                <p>Optimize your office environment to boost efficiency and morale. Our services include:</p>
+                <ul>
+                    <li>Space Planning: Efficient layout designs that maximize space utilization and functionality.</li>
+                    <li>Reception Areas: Professional and inviting reception areas that create a great first impression.</li>
+                    <li>Workstations and Cubicles: Custom-designed workstations that cater to different work styles and preferences.</li>
+                    <li>Conference Rooms: Modern and well-equipped conference rooms for effective meetings and presentations.</li>
+                    <li>Storage Solutions: Smart storage options that keep your office organized and clutter-free.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>4. Recreation Clubs</h3>
+                <p>Create vibrant and engaging recreational spaces that attract and retain members. We provide:</p>
+                <ul>
+                    <li>Clubhouses: Stylish and functional clubhouse interiors that serve as a central hub for members.</li>
+                    <li>Fitness Centers: State-of-the-art gym and fitness facilities designed for optimal use.</li>
+                    <li>Lounge Areas: Comfortable and inviting lounges for relaxation and socializing.</li>
+                    <li>Game Rooms: Fun and engaging game rooms equipped with various recreational activities.</li>
+                    <li>Event Spaces: Versatile event spaces that can be adapted for different occasions and gatherings.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Why Choose Picco Infra?</h2>
+                <ul>
+                    <li>Proven Track Record: With over million's of square feet of commercial projects completed.</li>
+                    <li>Customized Solutions: We tailor our designs to meet the specific needs and goals of each client, ensuring a perfect fit for your business.</li>
+                    <li>Quality and Craftsmanship: Our commitment to quality ensures that every project is completed to the highest standards.</li>
+                    <li>End-to-End Services: From initial consultation to project completion, we provide comprehensive interior solutions.</li>
+                    <li>Client-Centric Approach: We prioritize client satisfaction and work closely with you to bring your vision to life.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <img src="0.png" alt="PICCO Logo" class="footer-logo-img">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Picco Infra Solutions Pvt Ltd</h4>
+                        <p>Kres Building, 103/2, Uthamar Gandhi Road,<br>
+                        Nungambakkam, Chennai, Tamil Nadu<br>
+                        600034</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>info@piccoinfra.in<br>
+                        sales@piccoinfra.in<br>
+                        www.piccoinfra.in</p>
+                        <p>099410 55668<br>7010680806</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>Privacy statement<br>
+                        Cookie statement<br>
+                        Terms of service<br>
+                        Site map</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 | powered by Bizmanthra Business & IT Solutions Pvt Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html>

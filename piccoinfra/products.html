@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICCO - Infra Solutions | Products</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Updated with dropdown */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            max-height: 180px;
+            width: auto;
+            max-width: 200%;
+            height: auto;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+           
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-p {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2CBCB5;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .footer-logo-img {
+            max-height: 90px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .footer-logo-img {
+                max-height: 80px;
+            }
+        }
+
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0px;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: #2CBCB5;
+            background: rgba(44, 188, 181, 0.1);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-item:hover {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icons .instagram { background: #E4405F; }
+        .social-icons .facebook { background: #1877F2; }
+        .social-icons .twitter { background: #1DA1F2; }
+        .social-icons .youtube { background: #FF0000; }
+        .social-icons .linkedin { background: #0A66C2; }
+
+        .award-badge {
+            width: 40px;
+            height: 40px;
+            background: #2CBCB5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Products Hero Section */
+        .products-hero {
+            background: linear-gradient(135deg, #2CBCB5 0%, #20a5a0 100%);
+            padding: 150px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .products-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .products-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Product Categories */
+        .product-categories {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .category-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.05);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(44, 188, 181, 0.8), rgba(32, 165, 160, 0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .category-card:hover .category-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-content {
+            padding: 30px;
+        }
+
+        .category-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .category-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .category-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .category-features li {
+            padding: 5px 0;
+            color: #666;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .category-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2CBCB5;
+            font-weight: bold;
+        }
+
+        .learn-more-btn {
+            background: #2CBCB5;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .learn-more-btn:hover {
+            background: #20a5a0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 188, 181, 0.3);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2CBCB5, #20a5a0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: white;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer - Same as homepage */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-main {
+            color: #2CBCB5;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #2CBCB5;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .get-estimate-btn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            background: #FFD700;
+            color: #333;
+            padding: 15px 30px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 999;
+            transform-origin: right center;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-list {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            
+            .products-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin-top: 10px;
+                border-radius: 8px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .products-hero {
+                padding: 120px 20px 60px;
+            }
+            
+            .products-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .get-estimate-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .products-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                     <div class="logo-icon">
+                        <img src="0.png" alt="PICCO Logo" class="logo-img">
+                    </div>
+                    
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">ABOUT US</a></li>
+                        <li class="nav-item"><a href="whatwedo.html" class="nav-link">WHAT WE DO</a></li>
+                        <li class="nav-item">
+                            <a href="products.html" class="nav-link active">
+                                PRODUCTS
+                                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                            </a>
+                            <div class="dropdown">
+                                <a href="residential.html" class="dropdown-item">RESIDENTIAL</a>
+                                <a href="commercial.html" class="dropdown-item">COMMERCIAL</a>
+                                <a href="furnitures.html" class="dropdown-item">FURNITURES</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">GALLERY</a></li>
+                        <li class="nav-item"><a href="vendor-registration.html" class="nav-link">VENDOR REGISTRATION</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+                        <li class="nav-item"><a href="contact-us.html" class="nav-link">CONTACT US</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="social-icons">
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="award-badge">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>Our Products & Services</h1>
+            <p>Comprehensive interior design solutions for residential, commercial, and furniture needs</p>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="product-categories">
+        <div class="container">
+            <h2 class="section-title">PRODUCT CATEGORIES</h2>
+            <div class="categories-grid">
+                <!-- Residential Products -->
+                <div class="category-card" id="residential">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Residential Products">
+                        <div class="category-overlay">
+                            <div class="overlay-text">Explore Residential</div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>RESIDENTIAL</h3>
+                        <p>Transform your home into a beautiful, functional, and personalized residential interior. We create spaces that reflect your unique style and enhance your daily living experience.</p>
+                        <ul class="category-features">
+                            <li>Flats & Apartments Design</li>
+                            <li>Individual Villas & Bungalows</li>
+                            <li>Clubhouses & Community Spaces</li>
+                            <li>Custom Interior Solutions</li>
+                        </ul>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- Commercial Products -->
+                <div class="category-card" id="commercial">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Commercial Products">
+                        <div class="category-overlay">
+                            <div class="overlay-text">Explore Commercial</div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>COMMERCIAL</h3>
+                        <p>Elevate your business environment with our comprehensive commercial interior solutions. We create productive, professional, and inspiring workspaces.</p>
+                        <ul class="category-features">
+                            <li>Office Spaces & IT Consulting</li>
+                            <li>Hospitality & Restaurant Design</li>
+                            <li>Retail & Shopping Spaces</li>
+                            <li>Healthcare & Institutional</li>
+                        </ul>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- Furniture Products -->
+                <div class="category-card" id="furnitures">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Furniture Products">
+                        <div class="category-overlay">
+                            <div class="overlay-text">Explore Furniture</div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>FURNITURES</h3>
+                        <p>Premium quality furniture solutions designed to complement your interior spaces. From custom-made pieces to curated collections.</p>
+                        <ul class="category-features">
+                            <li>Custom Furniture Design</li>
+                            <li>Office & Commercial Furniture</li>
+                            <li>Residential Furniture Collections</li>
+                            <li>Specialized Storage Solutions</li>
+                        </ul>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">WHY CHOOSE PICCO</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>Quality Excellence</h4>
+                    <p>Superior materials and craftsmanship ensuring long-lasting, beautiful interiors that exceed expectations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Expert Team</h4>
+                    <p>Experienced designers and skilled craftsmen working together to bring your vision to life.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Timely Delivery</h4>
+                    <p>Committed to completing projects on schedule without compromising on quality or attention to detail.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Customer Centric</h4>
+                    <p>Personalized service and collaborative approach ensuring your unique needs and preferences are met.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                         <div class="logo-icon">
+                            <img src="0.png" alt="PICCO Logo" class="footer-logo-img">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Picco Infra Solutions Pvt Ltd</h4>
+                        <p>Kres Building, 103/2, Uthamar Gandhi Road,<br>
+                        Nungambakkam, Chennai, Tamil Nadu<br>
+                        600034</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>info@piccoinfra.in<br>
+                        sales@piccoinfra.in<br>
+                        www.piccoinfra.in</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>Privacy statement<br>
+                        Cookie statement<br>
+                        Terms of service<br>
+                        Site map</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 | powered by Bizmantra Business & IT Solutions Pvt Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Learn more button functionality
+        function initLearnMoreButtons() {
+            document.querySelectorAll('.learn-more-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const categoryCard = this.closest('.category-card');
+                    const categoryId = categoryCard.id;
+                    
+                    // You can redirect to specific category pages here
+                    console.log(`Learn more about ${categoryId}`);
+                    
+                    // For demo, show alert
+                    alert(`Redirecting to ${categoryId.toUpperCase()} products page...`);
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initSmoothScrolling();
+            initLearnMoreButtons();
+        });
+    </script>
+</body>
+</html>

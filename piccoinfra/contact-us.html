@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICCO - Infra Solutions | Contact Us</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Exact same styling as homepage */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-p {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2CBCB5;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .logo-img {
+            max-height: 180px;
+            width: auto;
+            max-width: 200%;
+            height: auto;
+        }
+        .footer-logo-img {
+            max-height: 90px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .footer-logo-img {
+                max-height: 80px;
+            }
+        }
+
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0px;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .nav-link:hover:not(.active) {
+            color: #2CBCB5;
+            background: rgba(44, 188, 181, 0.1);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-item:hover {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icons .instagram { background: #E4405F; }
+        .social-icons .facebook { background: #1877F2; }
+        .social-icons .twitter { background: #1DA1F2; }
+        .social-icons .youtube { background: #FF0000; }
+        .social-icons .linkedin { background: #0A66C2; }
+
+        .award-badge {
+            width: 40px;
+            height: 40px;
+            background: #2CBCB5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Contact Hero Section */
+        .contact-hero {
+            background: linear-gradient(135deg, #4A5568 0%, #2D3748 100%);
+            min-height: 100vh;
+            padding: 100px 0 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .contact-form-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            width: 400px;
+            flex-shrink: 0;
+        }
+
+        .form-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #2CBCB5;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #20a5a0;
+            box-shadow: 0 0 0 3px rgba(44, 188, 181, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #2CBCB5;
+            opacity: 0.7;
+        }
+
+        .form-select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%232CBCB5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+            appearance: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #2CBCB5;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: #20a5a0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 188, 181, 0.3);
+        }
+
+        /* Location Tabs */
+        .location-tabs {
+            background: #f8f9fa;
+            padding: 0;
+        }
+
+        .tabs-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tab-button {
+            flex: 1;
+            background: #e9ecef;
+            color: #333;
+            padding: 20px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-button.active {
+            background: #2CBCB5;
+            color: white;
+        }
+
+        .tab-button:hover:not(.active) {
+            background: #dee2e6;
+        }
+
+        /* Contact Information */
+        .contact-info {
+            background: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2CBCB5;
+            margin-bottom: 15px;
+        }
+
+        .card-address {
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .card-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #333;
+            min-width: 60px;
+        }
+
+        .contact-value {
+            color: #666;
+        }
+
+        .contact-value a {
+            color: #2CBCB5;
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: #f8f9fa;
+            padding: 0 0 50px;
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer - Same as homepage */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-main {
+            color: #2CBCB5;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #2CBCB5;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .get-estimate-btn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            background: #FFD700;
+            color: #333;
+            padding: 15px 30px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 999;
+            transform-origin: right center;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-list {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .contact-form-card {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+            
+            .contact-hero {
+                padding: 120px 20px 50px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .tabs-container {
+                flex-direction: column;
+            }
+            
+            .contact-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .get-estimate-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-form-card {
+                padding: 20px;
+            }
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Success message */
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="0.png" alt="PICCO Logo" class="logo-img">
+                    </div>
+                    
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">ABOUT US</a></li>
+                        <li class="nav-item"><a href="whatwedo.html" class="nav-link">WHAT WE DO</a></li>
+                        <li class="nav-item">
+                            <a href="products.html" class="nav-link">
+                                PRODUCTS
+                                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                            </a>
+                            <div class="dropdown">
+                                <a href="residential.html" class="dropdown-item">RESIDENTIAL</a>
+                                <a href="commercial.html" class="dropdown-item">COMMERCIAL</a>
+                                <a href="furnitures.html" class="dropdown-item">FURNITURES</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">GALLERY</a></li>
+                        <li class="nav-item"><a href="vendor-registration.html" class="nav-link">VENDOR REGISTRATION</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+                        <li class="nav-item"><a href="contact-us.html" class="nav-link active">CONTACT US</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="social-icons">
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="award-badge">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">CONTACT US</h1>
+                </div>
+                
+                <div class="contact-form-card">
+                    <div class="success-message" id="successMessage">
+                        Thank you! Your message has been sent successfully.
+                    </div>
+                    
+                    <h3 class="form-title">GET FREE ESTIMATE</h3>
+                    <p class="form-subtitle">Please fill out the enquiry below and we will get back to you as soon as possible</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Full Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="E-Mail ID" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" class="form-input" placeholder="+91" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-select" required>
+                                <option value="">Type of services</option>
+                                <option value="architecture">Architecture</option>
+                                <option value="civil">Civil Works</option>
+                                <option value="interior">Interior Design</option>
+                                <option value="mep">MEP Works</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="renovation">Renovation</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Tabs -->
+    <section class="location-tabs">
+        <div class="tabs-container">
+            <button class="tab-button active" data-tab="tamil-nadu">TAMIL NADU</button>
+            <button class="tab-button" data-tab="karnataka">KARNATAKA</button>
+            <button class="tab-button" data-tab="maharashtra">MAHARASHTRA</button>
+            <button class="tab-button" data-tab="pondicherry">PONDICHERRY</button>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+        <div class="container">
+            <!-- Tamil Nadu Tab Content -->
+            <div class="tab-content active" id="tamil-nadu">
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <h3 class="card-title">Chennai</h3>
+                        <div class="card-address">
+                            Corporate & Experience Centre:<br>
+                            103/2, Kres Building, Uthamar Gandhi Road,<br>
+                            Nungambakkam, Chennai, Tamil Nadu 600034
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">9941055668</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Landline</span>
+                                <span class="contact-value">044 4500 0133</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3 class="card-title">Erode</h3>
+                        <div class="card-address">
+                            1132, EB Colony, Lakshmi Nagar, Vasavi<br>
+                            College Post, Erode - 638316
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">9941055668</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karnataka Tab Content -->
+            <div class="tab-content" id="karnataka">
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <h3 class="card-title">Bangalore</h3>
+                        <div class="card-address">
+                            No. 2848, Second Diagonal Road<br>
+                            Jeevanbhimanagar, Bangalore 560075
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">9941055668</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3 class="card-title">Tumkur</h3>
+                        <div class="card-address">
+                            No.7, Panchami Ram Somma Sandra Nagar,<br>
+                            Nr. K. Kottai, Tumkurapalli - 620 011
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">9941055668</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3 class="card-title">Coimbatore</h3>
+                        <div class="card-address">
+                            A4 103, Sreenivasa Global Village,<br>
+                            Saravanampatti Road, Chinnavedampatti,<br>
+                            Coimbatore 641 049
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">7010680806</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3 class="card-title">Factory</h3>
+                        <div class="card-address">
+                            9/380, Patel Salai, Kesavan Avenue,<br>
+                            Medavakkam, Chennai - 600 100
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">9941055668</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maharashtra Tab Content -->
+            <div class="tab-content" id="maharashtra">
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <h3 class="card-title">Maharashtra</h3>
+                        <div class="card-address">
+                            Shop No - 1, Kailash Darshan Building, Somesh<br>
+                            Nagar, Amboli West, Andheri - 400058
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">9941055668</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pondicherry Tab Content -->
+            <div class="tab-content" id="pondicherry">
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <h3 class="card-title">Pondicherry</h3>
+                        <div class="card-address">
+                            5, Pillaiyar Koil Street, Kurumbarpet,<br>
+                            Pondicherry - 607 603
+                        </div>
+                        <div class="card-contact">
+                            <div class="contact-item">
+                                <span class="contact-label">Mobile</span>
+                                <span class="contact-value">9941055668</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:info@piccoinfra.in">info@piccoinfra.in</a><br>
+                                    <a href="mailto:sales@piccoinfra.in">sales@piccoinfra.in</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                         <div class="logo-icon">
+                            <img src="0.png" alt="PICCO Logo" class="footer-logo-img">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Picco Infra Solutions Pvt Ltd</h4>
+                        <p>Kres Building, 103/2, Uthamar Gandhi Road,<br>
+                        Nungambakkam, Chennai, Tamil Nadu<br>
+                        600034</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>info@piccoinfra.in<br>
+                        sales@piccoinfra.in<br>
+                        www.piccoinfra.in</p>
+                    </div>
+                    <div class="footer-section">
+                        <p>Privacy statement<br>
+                        Cookie statement<br>
+                        Terms of service<br>
+                        Site map</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 | powered by Bizmantra Business & IT Solutions Pvt Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Tab functionality
+        function initTabs() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.dataset.tab;
+                    
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        }
+
+        // Contact form functionality
+        function initContactForm() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                form.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            });
+        }
+
+        // Initialize Google Map
+        function initMap() {
+            // Center map on India
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 6,
+                center: { lat: 20.5937, lng: 78.9629 },
+                styles: [
+                    {
+                        featureType: 'water',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#e9e9e9' }, { lightness: 17 }]
+                    },
+                    {
+                        featureType: 'landscape',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#f5f5f5' }, { lightness: 20 }]
+                    }
+                ]
+            });
+
+            // Office locations
+            const locations = [
+                { lat: 13.0827, lng: 80.2707, title: 'Chennai - Corporate Office' },
+                { lat: 11.3410, lng: 77.7172, title: 'Erode Office' },
+                { lat: 12.9716, lng: 77.5946, title: 'Bangalore Office' },
+                { lat: 13.3409, lng: 77.1085, title: 'Tumkur Office' },
+                { lat: 11.0168, lng: 76.9558, title: 'Coimbatore Office' },
+                { lat: 19.0760, lng: 72.8777, title: 'Maharashtra Office' },
+                { lat: 11.9416, lng: 79.8083, title: 'Pondicherry Office' }
+            ];
+
+            // Add markers for each location
+            locations.forEach(location => {
+                const marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map,
+                    title: location.title,
+                    icon: {
+                        url: 'data:image/svg+xml;base64,' + btoa(`
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                                <circle cx="20" cy="20" r="18" fill="#2CBCB5" stroke="white" stroke-width="2"/>
+                                <circle cx="20" cy="20" r="8" fill="white"/>
+                            </svg>
+                        `),
+                        scaledSize: new google.maps.Size(40, 40)
+                    }
+                });
+
+                // Add info window
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<div style="padding: 10px; font-family: Poppins, sans-serif;">
+                        <h4 style="color: #2CBCB5; margin: 0 0 5px 0;">${location.title}</h4>
+                        <p style="margin: 0; color: #666;">PICCO Infra Solutions</p>
+                    </div>`
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initTabs();
+            initContactForm();
+        });
+
+        // Load Google Maps API
+        function loadGoogleMaps() {
+            const script = document.createElement('script');
+            script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+
+        // For demo purposes, we'll create a simple map placeholder
+        // In production, you would use the actual Google Maps API
+        document.addEventListener('DOMContentLoaded', function() {
+            const mapElement = document.getElementById('map');
+            mapElement.innerHTML = `
+                <div style="width: 100%; height: 100%; background: #e9ecef; display: flex; align-items: center; justify-content: center; color: #666; font-size: 18px; font-weight: 500;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-map-marker-alt" style="font-size: 48px; color: #2CBCB5; margin-bottom: 15px;"></i>
+                        <div>Interactive Map</div>
+                        <div style="font-size: 14px; margin-top: 5px;">Multiple PICCO office locations across India</div>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
